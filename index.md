@@ -11,7 +11,7 @@ my log has a message for you
     - [31st](/posts/2020/December/31.md)
       - [Cable chains](/posts/2020/December/31.md#cable-chains) [(topic)](/topics/cable-chains.md)
       - [Printer Von Printerson](/posts/2020/December/31.md#printer-von-printerson) [(topic)](/topics/printer-von-printerson.md)
-        - [McTitle](/posts/2020/December/31.md#mctitle) [(topic)](/topics/mctitle.md)
+        - [McTitle](/posts/2020/December/31.md#mctitle)
     - [30th](/posts/2020/December/30.md)
       - [knurled knobs](/posts/2020/December/30.md#knurled-knobs) [(topic)](/topics/knurled-knobs.md)
       - [Cable chains](/posts/2020/December/30.md#cable-chains) [(topic)](/topics/cable-chains.md)
