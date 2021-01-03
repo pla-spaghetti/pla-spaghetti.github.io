@@ -3,6 +3,8 @@ my log has a message for you
 
 - 2021
   - January
+    - [3rd](/posts/2021/January/3.md)
+      - [Escapement](/posts/2021/January/3.md#escapement) [(topic)](/topics/escapement.md)
     - [2nd](/posts/2021/January/2.md)
       - [Printed a thing](/posts/2021/January/2.md#printed-a-thing) [(topic)](/topics/printed-a-thing.md)
       - [YouTube](/posts/2021/January/2.md#youtube) [(topic)](/topics/youtube.md)
