@@ -3,6 +3,8 @@ my log has a message for you
 
 - 2021
   - January
+    - [3rd](/posts/2021/January/3.md)
+      - [Escapement](/posts/2021/January/3.md#escapement) [(topic)](/topics/escapement.md)
     - [2nd](/posts/2021/January/2.md)
       - [Printed a thing](/posts/2021/January/2.md#printed-a-thing) [(topic)](/topics/printed-a-thing.md)
       - [YouTube](/posts/2021/January/2.md#youtube) [(topic)](/topics/youtube.md)
@@ -28,9 +30,9 @@ my log has a message for you
       - [Eccentric nut adjustment](/posts/2020/December/27.md#eccentric-nut-adjustment) [(topic)](/topics/eccentric-nut-adjustment.md)
       - [Dialling in layers](/posts/2020/December/27.md#dialling-in-layers) [(topic)](/topics/dialling-in-layers.md)
       - [Lead screw bearing](/posts/2020/December/27.md#lead-screw-bearing) [(topic)](/topics/lead-screw-bearing.md)
+        - [Part failure](/posts/2020/December/27.md#part-failure)
       - [Precision micrometer](/posts/2020/December/27.md#precision-micrometer) [(topic)](/topics/precision-micrometer.md)
       - [Paper width suspicions](/posts/2020/December/27.md#paper-width-suspicions) [(topic)](/topics/paper-width-suspicions.md)
-      - [Part failure](/posts/2020/December/27.md#part-failure) [(topic)](/topics/part-failure.md)
       - [Looking at GCODE](/posts/2020/December/27.md#looking-at-gcode) [(topic)](/topics/looking-at-gcode.md)
       - [Some sense on z-offset](/posts/2020/December/27.md#some-sense-on-z-offset) [(topic)](/topics/some-sense-on-z-offset.md)
       - [Checking print height](/posts/2020/December/27.md#checking-print-height) [(topic)](/topics/checking-print-height.md)
