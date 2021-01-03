@@ -1,3 +1,6 @@
+# print_log
+my log has a message for you
+
 # Hot End Cooling Fan Duct
 ## 3rd January 2021
 
@@ -14,7 +17,6 @@
 Slightly quieter, archemedean chords look nice!
 
 # print_log
-my log has a message for you
 
 - 2021
   - January
