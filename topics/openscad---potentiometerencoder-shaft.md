@@ -59,10 +59,6 @@ The teeth are rendered with the debug *#* modifier which makes them red in the d
 
 Adding a 45 degree rotation to the cube gets us closer to the desired result.
 
-![45 rotation](https://cdn.discordapp.com/attachments/794700507448475679/795692741170429992/Screenshot_2021-01-04_at_16.38.01.png)
-
-The cuboids are now overlapping the shaft.
-
 ```scad
 
 module teeth(
@@ -81,6 +77,11 @@ module teeth(
 #teeth();
 
 ```
+
+![45 rotation](https://cdn.discordapp.com/attachments/794700507448475679/795692741170429992/Screenshot_2021-01-04_at_16.38.01.png)
+
+The cuboids are now overlapping the shaft.
+
 
 In order to get the teeth to be evenly spaced around the shaft we need to employ some Pythagoras. We create the cuboid with sides of a size that give a hypotenuse that is an equal part of the knurled shafts circumference. The cuboid is then rotated 45 degrees and centered on the origin before being moved into place.
 
