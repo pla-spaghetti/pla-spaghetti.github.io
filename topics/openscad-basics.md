@@ -172,3 +172,5 @@ for(s = [0,1,2,3,4]) {
 
 ![family of cones](https://cdn.discordapp.com/attachments/794700507448475679/795495976532967444/Screenshot_2021-01-04_at_03.34.10.png)
 
+That's enough basics for now. [If you want to know more the OpenSCAD user manual can probably answer your questions.](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#Variables) Till next time!
+
