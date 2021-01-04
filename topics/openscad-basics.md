@@ -1,4 +1,4 @@
-# openSCAD basics
+# OpenSCAD basics
 ## 4th January 2021
 
 ## cubes

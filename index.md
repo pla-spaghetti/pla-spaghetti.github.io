@@ -1,4 +1,4 @@
-# openSCAD basics
+# OpenSCAD basics
 ## 4th January 2021
 
 ## cubes
@@ -180,7 +180,7 @@ my log has a message for you
 - 2021
   - January
     - [4th](/posts/2021/January/4.md)
-      - [openSCAD basics](/posts/2021/January/4.md#openscad-basics) [(topic)](/topics/openscad-basics.md)
+      - [OpenSCAD basics](/posts/2021/January/4.md#openscad-basics) [(topic)](/topics/openscad-basics.md)
         - [cubes](/posts/2021/January/4.md#cubes)
         - [translation](/posts/2021/January/4.md#translation)
         - [rotation](/posts/2021/January/4.md#rotation)
