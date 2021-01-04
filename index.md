@@ -1,178 +1,176 @@
-# OpenSCAD basics
+# OpenSCAD - T18 potentiometer/encoder shaft
 ## 4th January 2021
 
-## cubes
-A 1x1x1 cube
-```scad
-cube(1);
-```
+The goal is to make a model for this type of shaft.
 
-![1x1x1 cube](https://cdn.discordapp.com/attachments/794700507448475679/795468352503414804/Screenshot_2021-01-04_at_01.45.07.png)
+![T18 encoder](https://cdn.discordapp.com/attachments/794700507448475679/795680873977479188/Screenshot_2021-01-04_at_15.40.18.png)
 
-The cube primitive behaves like you would expect given a single size argument by generating a cube of that size. It can however take a vector argument to specify lengths of sides in [x,y,z]. So cube also lets us make cuboids.
-```scad
-cube([1,2,3]);
-```
+Or is that a 20 tooth? There are different components that look like this but have slightly different specs. We best make a model that takes parameters for these. Diameter, number of teeth, slotted, height, should all be parameters.
 
-![[1,2,3] cuboid](https://cdn.discordapp.com/attachments/794700507448475679/795469528377196605/Screenshot_2021-01-04_at_01.51.00.png)
+![T18 diagram](https://cdn.discordapp.com/attachments/794700507448475679/795682374317899796/Screenshot_2021-01-04_at_15.42.51.png)
 
-## translation
-Translation is one of the fundamental operations we can use to place shapes in space. The translate operation takes an [x,y,z] style argument vector. It moves all child objects placed inside it along this vector.
-```scad
-translate([1,0,0]) cube([1,2,3]);
-```
-This translates our cuboid by 1 in the x direction.
+This is the diagram for the T18 shaft. [[1]](https://www.thonk.co.uk/wp-content/uploads/2019/11/Alpha-RD901F-20-15K-B10K-0018.pdf)
 
-![[1,2,3] cuboid translated [1,0,0]](https://cdn.discordapp.com/attachments/794700507448475679/795471038410260510/Screenshot_2021-01-04_at_01.53.17.png)
+![EC11 diagram](https://cdn.discordapp.com/attachments/794700507448475679/795683342438629476/Screenshot_2021-01-04_at_16.00.33.png)
 
-## rotation
-Rotation is another fundamental when it comes to moving shapes. The rotate operation also takes an [x,y,z] vector. The values are in degrees and the rotation is a "right-hand rule" behaviour about the corresponding axis.
-```scad
-rotate([90,0,0]) cube([1,2,3]);
-```
+This is the diagram from an EC11 shaft. [[2]](https://tech.alpsalpine.com/prod/e/html/encoder/incremental/ec11/ec11e1834403.html)
 
-![cuboid rotate 90 x](https://cdn.discordapp.com/attachments/794700507448475679/795473800346206218/Screenshot_2021-01-04_at_02.08.20.png)
-
-## difference
-Subtracting one object from another is a great way to make a more complex shape. We can take our cube from our cuboid like this.
-```scad
-difference() {
-    cube([1,2,3]);
-    cube(1);
-}
-```
-
-![cube taken from cuboid](https://cdn.discordapp.com/attachments/794700507448475679/795475171460382740/Screenshot_2021-01-04_at_02.11.42.png)
-
-## union
-
-Union is the dual of difference. It lets us add shapes together.
-
-```scad
-union() {
-    cube([1,2,3]);
-    cube([2,1,1]);
-}
-```
-
-![union of cuboids](https://cdn.discordapp.com/attachments/794700507448475679/795481342040080394/Screenshot_2021-01-04_at_02.37.53.png)
-
-Union is so fundamental an operation it is the default thing that happens in your scad program. This union of shapes can be expressed equivalently and more concisely like so.
-```scad
-cube([1,2,3]);
-cube([2,1,1]);
-```
-This is just what sequencing operations in openSCAD is - a union of shapes. So why do we need a union operation at all when scad just takes care of that for us?
-
-If we want to take away the unit cube from this union of shapes we might try this.
-```scad
-difference() {
-    cube([1,2,3]);
-    cube([2,1,1]);
-    cube(1);
-}
-```
-![cube taken from cuboid](https://cdn.discordapp.com/attachments/794700507448475679/795475171460382740/Screenshot_2021-01-04_at_02.11.42.png)
-
-Which is perfectly valid but does not do what we want. The difference operation is removing all of the subsequent children from the first child expression so this looks just like one of our earlier more boring shapes. To achieve the desired result we need the first child to be the union.
-```scad
-difference() {
-    union() {
-      cube([1,2,3]);
-      cube([2,1,1]);
-    }
-    cube(1);
-}
-```
-Now we have what we want.
-
-![cube from union](https://cdn.discordapp.com/attachments/794700507448475679/795484163460694046/Screenshot_2021-01-04_at_02.49.35.png)
-
-## sphere
-Cubes have their limitations. Let's introduce the sphere.
-```scad
-sphere(r=1);
-```
-
-![non sphere](https://cdn.discordapp.com/attachments/794700507448475679/795486231126605844/Screenshot_2021-01-04_at_02.57.54.png)
-
-That's not very spherical looking is it? To fix that we have to introduce *the special variables*. These are $fa, $fs, and $fn. These allow you to set *the number of facets used to generate an arc* . This lets you trade rendering performance for model detail. For now this fixes our problem by increasing the number of *fragments*. But this approach may not be the best if your model is complicated.
-```scad
-$fn=100;
-sphere(r=1);
-```
-
-![spherical sphere](https://cdn.discordapp.com/attachments/794700507448475679/795488374106357770/Screenshot_2021-01-04_at_03.00.42.png)
-
-## cylinders
-As we have seen, spheres can be *unpredictable*... Cylinders are where it's at. And with some rotation, translation, and difference we can make something truly magnificent.
-```scad
-$fn=50; //100 took too long to render so it's 50 now
-difference() {
-    cylinder(r=1,h=4);
-    cylinder(r=0.8,h=4);
-    translate([0,0,2]) rotate([90,0,0]) cylinder(r=0.4,h=4);
-}
-```
-
-![magnificent](https://cdn.discordapp.com/attachments/794700507448475679/795490843674279966/Screenshot_2021-01-04_at_03.16.16.png)
-
-Cylinder, like cube, has some tricks up its sleeve. Instead of just specifying a single *r*, the radius of the circles making up both ends of the cylinder, we can specify *r1* and *r2*, which opens up a world of cone shaped possibilities.
+A good starting point would be a stack of two cylinders, one being the standoff, the other being the knurled part.
 ```scad
 $fn=50;
-difference() {
-    cylinder(r1=1,r2=0.8,h=4);
-    cylinder(r=0.8,h=4);
-    translate([0,0,2]) rotate([90,0,0]) cylinder(r=0.4,h=4);
+module knurled_shaft(
+    standoff_radius = 7
+  , standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  ) {
+  cylinder(r=standoff_radius,h=standoff_height);
+  translate([0,0,standoff_height])
+      cylinder(r=knurled_radius,h=knurled_height);
 }
+knurled_shaft();
 ```
 
-![by the cones of dunshire](https://cdn.discordapp.com/attachments/794700507448475679/795491785023029268/Screenshot_2021-01-04_at_03.19.59.png)
+![cylinder stack](https://cdn.discordapp.com/attachments/794700507448475679/795686044841803826/Screenshot_2021-01-04_at_16.11.02.png)
 
-## modules
-Now we have made the perfect object we might want to give it a name to call it by. Then we won't have to copy and paste its code whenever we want to make one.
+Let's work on some teeth as a separate module. We want to generate a shape we can subtract from the knurled part to make teeth. This is a good starting point and is almost what we want. We just need a few more parameters to control the tooth shape.
 ```scad
-$fn=50;
-module holey_cone() {
-    difference() {
-        cylinder(r1=1,r2=0.8,h=4);
-        cylinder(r=0.8,h=4);
-        translate([0,0,2]) rotate([90,0,0]) cylinder(r=0.4,h=4);
+module teeth(
+    standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  ,num_teeth = 20
+) {
+    for(tooth = [0:num_teeth] ) {
+        rotate([0,0,tooth*(360/num_teeth)]) translate([knurled_radius,0,standoff_height])
+          cube([1,1,knurled_height]);
     }
 }
-holey_cone();
-translate([3,0,0]) holey_cone();
+#teeth();
 ```
 
-![two towers](https://cdn.discordapp.com/attachments/794700507448475679/795493459670466590/Screenshot_2021-01-04_at_03.26.33.png)
+![almost teeth](https://cdn.discordapp.com/attachments/794700507448475679/795689481579397170/Screenshot_2021-01-04_at_16.22.20.png)
 
-Modules can do more than just give our objects names. They also accept arguments which lets us parameterise them. We can allow change of scale of our holey_cone like this.
+Teeth are generated by looping over a variable *tooth* from 0 to (num_teeth - 1).  And generating a shape for each tooth based on its *tooth* index.
+
+The tooth shape is a cube that is 1x1xknurled_height that has been translated out to knurled_radius on the x axis and up to standoff_height in the z-axis. Each tooth is then rotated by tooth*(360/num_teeth).
+
+The teeth are rendered with the debug *#* modifier which makes them red in the debug view.
+
+Adding a 45 degree rotation to the cube gets us closer to the desired result.
+
+![45 rotation](https://cdn.discordapp.com/attachments/794700507448475679/795692741170429992/Screenshot_2021-01-04_at_16.38.01.png)
+
+The cuboids are now overlapping the shaft.
+
 ```scad
-$fn=50;
-module holey_cone(scale) {
-    difference() {
-        cylinder(r1=1*scale,r2=0.8*scale,h=4*scale);
-        cylinder(r=0.8*scale,h=4*scale);
-        translate([0,0,2*scale]) rotate([90,0,0]) cylinder(r=0.4*scale,h=4*scale);
+
+module teeth(
+    standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  ,num_teeth = 20
+) {
+    for(tooth = [0:num_teeth] ) {
+        rotate([0,0,tooth*(360/num_teeth)]) 
+          translate([knurled_radius,0,standoff_height])
+            rotate([0,0,45])
+               cube([1,1,knurled_height]);
     }
 }
-holey_cone(1);
-translate([3,0,0]) holey_cone(1.4);
+#teeth();
+
 ```
 
-![scaled cone](https://cdn.discordapp.com/attachments/794700507448475679/795494309260296252/Screenshot_2021-01-04_at_03.29.57.png)
+In order to get the teeth to be evenly spaced around the shaft we need to employ some Pythagoras. We create the cuboid with sides of a size that give a hypotenuse that is an equal part of the knurled shafts circumference. The cuboid is then rotated 45 degrees and centered on the origin before being moved into place.
 
-## for loops
-A for loop can be used to create ensembles of shapes. The loop index can be used to set parameters for each shape since it is available as a variable within the loop braces.
 ```scad
-for(s = [0,1,2,3,4]) {
-  translate([s*4 + s,0,0]) holey_cone(1 + s*0.4);
+
+module teeth(
+    standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  ,num_teeth = 20
+) {
+    circumference_part = 2*PI*knurled_radius/num_teeth;
+    square_edge = sqrt(pow(circumference_part,2)/2);
+    for(tooth = [0:num_teeth] ) {
+        rotate([0,0,tooth*(360/num_teeth)])
+        translate([knurled_radius,0,standoff_height])
+        translate([0,-circumference_part/2,0])
+        rotate([0,0,45]) 
+        cube([square_edge,square_edge,knurled_height]);
+    }
 }
+#teeth();
 ```
 
-![family of cones](https://cdn.discordapp.com/attachments/794700507448475679/795495976532967444/Screenshot_2021-01-04_at_03.34.10.png)
+![squares in right place](https://cdn.discordapp.com/attachments/794700507448475679/795695992623333386/Screenshot_2021-01-04_at_16.51.17.png)
 
-That's enough basics for now. [If you want to know more the OpenSCAD user manual can probably answer your questions.](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#Variables) Till next time!
+Let's rename our knurled_shaft module to basic_shaft so that knurled shaft can become the difference of the basic shaft and the teeth.
+
+```scad
+$fn=50;
+module basic_shaft(
+    standoff_radius = 7
+  , standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  ) {
+  cylinder(r=standoff_radius,h=standoff_height);
+  translate([0,0,standoff_height])
+      cylinder(r=knurled_radius,h=knurled_height);
+}
+
+module teeth(
+    standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  , num_teeth = 20
+) {
+    circumference_part = 2*PI*knurled_radius/num_teeth;
+    square_edge = sqrt(pow(circumference_part,2)/2);
+    for(tooth = [0:num_teeth] ) {
+        rotate([0,0,tooth*(360/num_teeth)])
+        translate([knurled_radius,0,standoff_height])
+        translate([0,-circumference_part/2,0])
+        rotate([0,0,45]) cube([square_edge,square_edge,knurled_height]);
+    }
+}
+
+module knurled_shaft(
+
+    standoff_radius = 7
+  , standoff_height = 16
+  , knurled_radius = 6
+  , knurled_height = 11
+  , num_teeth = 20
+  ) {
+  difference() {
+      basic_shaft(
+        standoff_radius = standoff_radius
+      , standoff_height = standoff_height
+      , knurled_radius = knurled_radius
+      , knurled_height = knurled_height
+      );
+      #teeth(
+        standoff_height = standoff_height
+      , knurled_radius = knurled_radius
+      , knurled_height = knurled_height
+      , num_teeth = num_teeth
+      );
+  }      
+}
+knurled_shaft();
+```
+
+![debug shaft render](https://cdn.discordapp.com/attachments/794700507448475679/795698011211825182/Screenshot_2021-01-04_at_16.57.20.png)
+
+The preview render *F5* looks like this because of the # modifier before teeth in the knurled_shaft module.
+
+![finished product](https://cdn.discordapp.com/attachments/794700507448475679/795698252116131871/Screenshot_2021-01-04_at_16.57.44.png)
+
+The full render *F6* is an approximate model for the type of shaft we are interested in. Hopefully it will be good enough to subtract a void for a part that fits on the shaft.
 
 # print_log
 my log has a message for you
@@ -190,6 +188,11 @@ my log has a message for you
         - [cylinders](/posts/2021/January/4.md#cylinders)
         - [modules](/posts/2021/January/4.md#modules)
         - [for loops](/posts/2021/January/4.md#for-loops)
+        - [intersection](/posts/2021/January/4.md#intersection)
+        - [we want to see the individual shapes that created this composite we can modify the code or comment parts out to get a look but this will change our model. By using  a *modifier character* to render parts of the model differently we can change the preview model (*F5*) but still render the full model as normal (*F6*). The *#* symbol will render all of its child objects in a different colour and opacity in the preview mode only.](/posts/2021/January/4.md#we-want-to-see-the-individual-shapes-that-created-this-composite-we-can-modify-the-code-or-comment-parts-out-to-get-a-look-but-this-will-change-our-model-by-using--a-modifier-character-to-render-parts-of-the-model-differently-we-can-change-the-preview-model-f5-but-still-render-the-full-model-as-normal-f6-the--symbol-will-render-all-of-its-child-objects-in-a-different-colour-and-opacity-in-the-preview-mode-only)
+      - [OpenSCAD - T18 potentiometer/encoder shaft](/posts/2021/January/4.md#openscad---t18-potentiometerencoder-shaft) [(topic)](/topics/openscad---t18-potentiometerencoder-shaft.md)
+          - [teeth are rendered with the debug *#* modifier which makes them red in the debug view.](/posts/2021/January/4.md#teeth-are-rendered-with-the-debug--modifier-which-makes-them-red-in-the-debug-view)
+          - [preview render *F5* looks like this because of the # modifier before teeth in the knurled_shaft module.](/posts/2021/January/4.md#preview-render-f5-looks-like-this-because-of-the--modifier-before-teeth-in-the-knurled_shaft-module)
     - [3rd](/posts/2021/January/3.md)
       - [Escapement](/posts/2021/January/3.md#escapement) [(topic)](/topics/escapement.md)
       - [Hot End Cooling Fan Duct](/posts/2021/January/3.md#hot-end-cooling-fan-duct) [(topic)](/topics/hot-end-cooling-fan-duct.md)

@@ -174,3 +174,25 @@ for(s = [0,1,2,3,4]) {
 
 That's enough basics for now. [If you want to know more the OpenSCAD user manual can probably answer your questions.](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#Variables) Till next time!
 
+## intersection
+Another basic transformation we may wish to perform on shapes is an intersection. The space where two (or more) shapes overlap might also be an interesting shape.
+```scad
+intersection() {
+    sphere(1);
+    cube(3);
+}
+```
+
+![eighth of a sphere](https://cdn.discordapp.com/attachments/794700507448475679/795670858353213530/Screenshot_2021-01-04_at_15.09.13.png)
+
+If we want to see the individual shapes that created this composite we can modify the code or comment parts out to get a look but this will change our model. By using  a *modifier character* to render parts of the model differently we can change the preview model (*F5*) but still render the full model as normal (*F6*). The *#* symbol will render all of its child objects in a different colour and opacity in the preview mode only.
+```scad
+intersection() {
+    sphere(1);
+    #cube(2);
+}
+```
+
+![debug render](https://cdn.discordapp.com/attachments/794700507448475679/795674281547530270/Screenshot_2021-01-04_at_15.25.09.png)
+
+[For more information on modifiers see OpenSCAD manual page on debugging aids.](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Modifier_Characters)
