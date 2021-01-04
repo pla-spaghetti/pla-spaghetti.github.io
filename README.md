@@ -173,6 +173,25 @@ The preview render *F5* looks like this because of the # modifier before teeth i
 
 The full render *F6* is an approximate model for the type of shaft we are interested in. Hopefully it will be good enough to subtract a void for a part that fits on the shaft.
 
+Some notes:
+- We haven't modelled the slot but this means that if used as a void the part will be mountable in many orientations.
+- The drawn models for the parts do not mention tooth depth or shape however this will likely affect how the parts fit. If the printed parts don't fit it would make sense to adjust the radius of the knurled part accordingly to find something that works.
+
+The simplest knob we could make for an EC11 encoder would be a cylinder with the shaft removed.
+```scad
+difference() {
+    cylinder(r=5,h=10);
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![simple knob](https://cdn.discordapp.com/attachments/794700507448475679/795716169054421022/Screenshot_2021-01-04_at_18.09.52.png)
+
 # print_log
 my log has a message for you
 
