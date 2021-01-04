@@ -267,3 +267,63 @@ difference() {
 
 ![twizzler](https://cdn.discordapp.com/attachments/794700507448475679/795746808789860372/Screenshot_2021-01-04_at_20.13.14.png)
 
+## double twizzler
+
+union with the opposite rotation makes some interesting knurling
+```scad
+difference() {
+    union() {
+        linear_extrude(height = 10,  twist = 150) {
+            for(x = [0:9]) {
+                rotate([0,0,x*36]) translate([3,0,0]) circle(1);
+            }
+        }
+        linear_extrude(height = 10,  twist = -150) {
+            for(x = [0:9]) {
+                rotate([0,0,x*36]) translate([3,0,0]) circle(1);
+            }
+        }
+        translate([0,0,7]) cylinder(r=3,h=3);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![double twizzler](https://cdn.discordapp.com/attachments/794700507448475679/795763546045677578/Screenshot_2021-01-04_at_21.16.41.png)
+
+## intersection of twizzlers
+another interesting knurl effect
+```scad
+difference() {
+    union() {
+        intersection() {
+            linear_extrude(height = 10,  twist = 150) {
+                for(x = [0:9]) {
+                    rotate([0,0,x*36]) translate([3,0,0]) circle(1);
+                }
+            }
+            linear_extrude(height = 10,  twist = -150) {
+                for(x = [0:9]) {
+                    rotate([0,0,x*36]) translate([3,0,0]) circle(1);
+                }
+            }
+        }
+        translate([0,0,7]) cylinder(r=3,h=3);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+
+![intersection of twizzles](https://cdn.discordapp.com/attachments/794700507448475679/795765351673102376/Screenshot_2021-01-04_at_21.24.14.png)
+
