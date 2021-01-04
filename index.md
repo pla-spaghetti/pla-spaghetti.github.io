@@ -1,11 +1,11 @@
-# OpenSCAD - T18 potentiometer/encoder shaft
+# OpenSCAD - potentiometer/encoder shaft
 ## 4th January 2021
 
 The goal is to make a model for this type of shaft.
 
 ![T18 encoder](https://cdn.discordapp.com/attachments/794700507448475679/795680873977479188/Screenshot_2021-01-04_at_15.40.18.png)
 
-Or is that a 20 tooth? There are different components that look like this but have slightly different specs. We best make a model that takes parameters for these. Diameter, number of teeth, slotted, height, should all be parameters.
+There are different components that look like this but have slightly different specs. We best make a model that takes parameters for these. Diameter, number of teeth, slotted, height, should all be parameters.
 
 ![T18 diagram](https://cdn.discordapp.com/attachments/794700507448475679/795682374317899796/Screenshot_2021-01-04_at_15.42.51.png)
 
@@ -15,7 +15,7 @@ This is the diagram for the T18 shaft. [[1]](https://www.thonk.co.uk/wp-content/
 
 This is the diagram from an EC11 shaft. [[2]](https://tech.alpsalpine.com/prod/e/html/encoder/incremental/ec11/ec11e1834403.html)
 
-A good starting point would be a stack of two cylinders, one being the standoff, the other being the knurled part.
+A good starting point would be a stack of two cylinders, one being the standoff, the other being the knurled part. The top cylinder is lifted to the height of the bottom cylinder.
 ```scad
 $fn=50;
 module knurled_shaft(
@@ -189,7 +189,7 @@ my log has a message for you
         - [modules](/posts/2021/January/4.md#modules)
         - [for loops](/posts/2021/January/4.md#for-loops)
         - [intersection](/posts/2021/January/4.md#intersection)
-      - [OpenSCAD - T18 potentiometer/encoder shaft](/posts/2021/January/4.md#openscad---t18-potentiometerencoder-shaft) [(topic)](/topics/openscad---t18-potentiometerencoder-shaft.md)
+      - [OpenSCAD - potentiometer/encoder shaft](/posts/2021/January/4.md#openscad---potentiometerencoder-shaft) [(topic)](/topics/openscad---potentiometerencoder-shaft.md)
     - [3rd](/posts/2021/January/3.md)
       - [Escapement](/posts/2021/January/3.md#escapement) [(topic)](/topics/escapement.md)
       - [Hot End Cooling Fan Duct](/posts/2021/January/3.md#hot-end-cooling-fan-duct) [(topic)](/topics/hot-end-cooling-fan-duct.md)
