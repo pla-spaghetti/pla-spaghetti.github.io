@@ -226,3 +226,44 @@ difference() {
 
 ![cube knob](https://cdn.discordapp.com/attachments/794700507448475679/795733971845513226/Screenshot_2021-01-04_at_19.20.01.png)
 
+## top-hat knob with pointer
+```scad
+difference() {
+    union() {
+        cylinder(r1=8,r2=5.5,h=2);
+        cylinder(r1=5.5,r2=5,h=9);
+        #translate([2,2,8.5]) rotate([40,40,45]) cube(1);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![top-hat-pointer](https://cdn.discordapp.com/attachments/794700507448475679/795739334401589258/Screenshot_2021-01-04_at_19.42.59.png)
+
+## twizzler
+```scad
+difference() {
+    union() {
+        linear_extrude(height = 10,  twist = 50) {
+            for(x = [0:9]) {
+                rotate([0,0,x*36]) translate([3,0,0]) circle(1);
+            }
+        }
+        translate([0,0,7]) cylinder(r=3,h=3);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![twizzler](https://cdn.discordapp.com/attachments/794700507448475679/795746808789860372/Screenshot_2021-01-04_at_20.13.14.png)
+

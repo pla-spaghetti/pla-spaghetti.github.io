@@ -226,6 +226,47 @@ difference() {
 
 ![cube knob](https://cdn.discordapp.com/attachments/794700507448475679/795733971845513226/Screenshot_2021-01-04_at_19.20.01.png)
 
+## top-hat knob with pointer
+```scad
+difference() {
+    union() {
+        cylinder(r1=8,r2=5.5,h=2);
+        cylinder(r1=5.5,r2=5,h=9);
+        #translate([2,2,8.5]) rotate([40,40,45]) cube(1);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![top-hat-pointer](https://cdn.discordapp.com/attachments/794700507448475679/795739334401589258/Screenshot_2021-01-04_at_19.42.59.png)
+
+## twizzler
+```scad
+difference() {
+    union() {
+        linear_extrude(height = 10,  twist = 50) {
+            for(x = [0:9]) {
+                rotate([0,0,x*36]) translate([3,0,0]) circle(1);
+            }
+        }
+        translate([0,0,7]) cylinder(r=3,h=3);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![twizzler](https://cdn.discordapp.com/attachments/794700507448475679/795746808789860372/Screenshot_2021-01-04_at_20.13.14.png)
+
 # print_log
 my log has a message for you
 
@@ -246,6 +287,8 @@ my log has a message for you
       - [OpenSCAD - potentiometer/encoder shaft](/posts/2021/January/4.md#openscad---potentiometerencoder-shaft) [(topic)](/topics/openscad---potentiometerencoder-shaft.md)
         - [sphere knob](/posts/2021/January/4.md#sphere-knob)
         - [cube knob](/posts/2021/January/4.md#cube-knob)
+        - [top-hat knob with pointer](/posts/2021/January/4.md#top-hat-knob-with-pointer)
+        - [twizzler](/posts/2021/January/4.md#twizzler)
     - [3rd](/posts/2021/January/3.md)
       - [Escapement](/posts/2021/January/3.md#escapement) [(topic)](/topics/escapement.md)
       - [Hot End Cooling Fan Duct](/posts/2021/January/3.md#hot-end-cooling-fan-duct) [(topic)](/topics/hot-end-cooling-fan-duct.md)
