@@ -192,6 +192,40 @@ difference() {
 
 ![simple knob](https://cdn.discordapp.com/attachments/794700507448475679/795716169054421022/Screenshot_2021-01-04_at_18.09.52.png)
 
+## sphere knob
+Here's a spherical knob for the same shaft.
+```scad
+difference() {
+    union() {
+        cylinder(r=5,h=2);
+        translate([0,0,10]) sphere(r=10);
+    }
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![sphere knob](https://cdn.discordapp.com/attachments/794700507448475679/795733808145760276/Screenshot_2021-01-04_at_19.15.47.png)
+
+## cube knob
+```scad
+difference() {
+    translate([-5,-5,0]) cube(10);
+    knurled_shaft(
+        standoff_radius=3
+      , standoff_height=1
+      , knurled_radius=3
+      , knurled_height=6
+      , num_teeth=20);
+}
+```
+
+![cube knob](https://cdn.discordapp.com/attachments/794700507448475679/795733971845513226/Screenshot_2021-01-04_at_19.20.01.png)
+
 # print_log
 my log has a message for you
 
@@ -210,6 +244,8 @@ my log has a message for you
         - [for loops](/posts/2021/January/4.md#for-loops)
         - [intersection](/posts/2021/January/4.md#intersection)
       - [OpenSCAD - potentiometer/encoder shaft](/posts/2021/January/4.md#openscad---potentiometerencoder-shaft) [(topic)](/topics/openscad---potentiometerencoder-shaft.md)
+        - [sphere knob](/posts/2021/January/4.md#sphere-knob)
+        - [cube knob](/posts/2021/January/4.md#cube-knob)
     - [3rd](/posts/2021/January/3.md)
       - [Escapement](/posts/2021/January/3.md#escapement) [(topic)](/topics/escapement.md)
       - [Hot End Cooling Fan Duct](/posts/2021/January/3.md#hot-end-cooling-fan-duct) [(topic)](/topics/hot-end-cooling-fan-duct.md)
