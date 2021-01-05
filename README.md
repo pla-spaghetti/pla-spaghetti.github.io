@@ -332,6 +332,9 @@ my log has a message for you
 
 - 2021
   - January
+    - [5th](/posts/2021/January/5.md)
+        - [inverted knurl](/posts/2021/January/5.md#inverted-knurl)
+        - [spiky](/posts/2021/January/5.md#spiky)
     - [4th](/posts/2021/January/4.md)
       - [OpenSCAD basics](/posts/2021/January/4.md#openscad-basics) [(topic)](/topics/openscad-basics.md)
         - [cubes](/posts/2021/January/4.md#cubes)
