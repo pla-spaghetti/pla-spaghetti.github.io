@@ -1,25 +1,21 @@
-# Cooling Vent Ring
-## 5th January 2021
+# Pi Cam
+## 6th January 2021
 
-![](https://cdn.discordapp.com/attachments/794700507448475679/796118904337465364/Screenshot_20210105-205134_Chrome.jpg)
+![](https://cdn.discordapp.com/attachments/794700507448475679/796381231541256212/20210106_141106.jpg)
 
-[Find on Thingiverse here](https://www.thingiverse.com/thing:3460583)
+Put black electrical tape on the pi cam ribbon cable for protection and aesthetics. Think this is a better cam mount point but needs some modification or a different mount
 
-![](https://cdn.discordapp.com/attachments/794700507448475679/796124979586531408/20210105_210100.jpg)
+![](https://cdn.discordapp.com/attachments/794700507448475679/796382236927590410/20210106_141824.jpg)
 
-First 2 tone!
-
-![](https://cdn.discordapp.com/attachments/794700507448475679/796125181436493855/20210105_210756.jpg)
-
-![](https://cdn.discordapp.com/attachments/794700507448475679/796125182069702676/20210105_210948.jpg)
-
-Nozzle not quite centered, but air seems to flow out each vent hole
+Currently held on with a small clamp... I think a stationery cam is better for timlapses, and cam position could be changed to accommodate larger prints so that they fit in the frame
 
 # print_log
 my log has a message for you
 
 - 2021
   - January
+    - [6th](/posts/2021/January/6.md)
+      - [Pi Cam](/posts/2021/January/6.md#pi-cam) [(topic)](/topics/pi-cam.md)
     - [5th](/posts/2021/January/5.md)
       - [OpenSCAD - potentiometer/encoder shaft](/posts/2021/January/5.md#openscad---potentiometerencoder-shaft) [(topic)](/topics/openscad---potentiometerencoder-shaft.md)
         - [inverted knurl](/posts/2021/January/5.md#inverted-knurl)
